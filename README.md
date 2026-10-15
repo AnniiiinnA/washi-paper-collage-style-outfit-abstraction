@@ -1,6 +1,6 @@
 # Washi-paper collage style outfit abstraction
 
-A Codex skill that turns the main outfit in a fashion or travel photo into a minimal, flat handmade washi-paper collage on a transparent PNG background.
+A Codex skill that turns the main outfit in a photo into a minimal, flat handmade washi-paper collage on a transparent PNG background.
 
 It analyzes silhouette, color, garment structure, layering, material appearance, and clothing-integral accessories, then uses a small number of large paper shapes. The original rendering prompt is preserved verbatim in `references/exact-prompt.txt`.
 
