@@ -1,0 +1,4 @@
+interface:
+  display_name: "washi-paper collage style outfit abstraction"
+  short_description: "Turn outfit photos into flat washi-paper collages"
+  default_prompt: "Use $washi-paper-collage-style-outfit-abstraction to turn the main outfit in my uploaded photo into a minimal flat washi-paper collage on a true transparent background."
