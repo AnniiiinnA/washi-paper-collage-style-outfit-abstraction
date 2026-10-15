@@ -1,33 +1,71 @@
 # Washi-paper collage style outfit abstraction
 
-A Codex skill that turns the main outfit in a fashion or travel photo into a minimal, flat handmade washi-paper collage on a transparent PNG background.
+[中文说明](README.zh-CN.md)
 
-It analyzes silhouette, color, garment structure, layering, material appearance, and clothing-integral accessories, then uses a small number of large paper shapes. The original rendering prompt is preserved verbatim in `references/exact-prompt.txt`.
+An agent-independent workflow that turns the main outfit in a fashion or travel photo into a minimal flat handmade washi-paper collage on a true transparent PNG background. It preserves silhouette, colors, structure, layering, and material character using a few large paper shapes.
 
-## Install
+## Method 1: Give the repository link to your agent
 
-Download this repository and copy its folder to your Codex skills directory:
+No installation is needed if your agent can read GitHub files. Attach your photo and send:
+
+```text
+Read SKILL.md and the complete references/exact-prompt.md in this repository, then follow the workflow to turn the main outfit in my photo into a transparent washi-paper collage:
+https://github.com/AnniiiinnA/washi-paper-collage-style-outfit-abstraction
+If you cannot access the files or generate images, tell me what capability is missing.
+```
+
+If your agent supports GitHub skill installation, ask it to install this repository using its supported mechanism and preserve the directory structure. Alternatively, clone it and ask the agent to read the local `SKILL.md`:
+
+```sh
+git clone https://github.com/AnniiiinnA/washi-paper-collage-style-outfit-abstraction.git
+```
+
+Cloning downloads the workflow; automatic skill discovery depends on the host's installation mechanism.
+
+## Method 2: Upload the files to a conversational AI
+
+Click **Code → Download ZIP** on GitHub, extract it, and upload:
+
+- `SKILL.md`
+- All Markdown files in `references/` (the exact prompt is essential; the Codex adapter is optional outside Codex)
+- Your fashion or travel photo
+
+Then send:
+
+```text
+Read the uploaded SKILL.md and references/exact-prompt.md completely. Follow the workflow to analyze the main outfit in my photo and generate a minimal flat washi-paper collage as a true transparent PNG. Use the Codex adapter only in Codex. If you cannot generate images, give me the full assembled prompt and label it as a prompt-only handoff.
+```
+
+If document uploads are unsupported, paste the complete contents of `SKILL.md` and `references/exact-prompt.md`. Do not summarize the exact prompt.
+
+## Method 3: Install as a local skill
+
+Use your agent's documented skill directory or GitHub installer. Keep `SKILL.md` and `references/` together. `agents/openai.yaml` is optional Codex metadata; other hosts can ignore it.
+
+For Codex, copy the repository folder to:
 
 - Windows: `%USERPROFILE%\.codex\skills\washi-paper-collage-style-outfit-abstraction`
 - macOS/Linux: `~/.codex/skills/washi-paper-collage-style-outfit-abstraction`
-- If you use a custom `CODEX_HOME`, use its `skills` subdirectory instead.
+- Custom `CODEX_HOME`: its `skills` subdirectory
 
-The destination folder must contain `SKILL.md`, `agents/openai.yaml`, and `references/exact-prompt.txt` directly. Start a new Codex session after installation.
-
-## Use
-
-Attach a fashion or travel photo and ask:
+Start a new session, attach a photo, and ask:
 
 ```text
 Use $washi-paper-collage-style-outfit-abstraction to abstract the main outfit in this photo.
 ```
 
-Requires an environment with the built-in image generation tool and the `imagegen` skill. Python and an API key are not required for the default rendering workflow.
+Hosts without `$skill-name` syntax can use an ordinary request to follow `SKILL.md`.
 
-## Output and limitations
+## Capabilities and limitations
 
-The target is an isolated outfit made from a few flat paper shapes, without a person or mannequin, on a true transparent background. The outfit should occupy 45–55% of image height. Separate accessories such as bags, jewelry, hats, and shoes are excluded by default.
+| Host capabilities | Available result |
+| --- | --- |
+| Read instructions, inspect photos, reference-guided image generation with PNG alpha | Full image workflow |
+| Read instructions and inspect photos, but no image generation | Analysis and full generation prompt; no finished image |
+| Cannot inspect photos | Load the workflow, then transfer to a vision-capable environment |
 
-Selection, analysis order, shape planning, and prompt assembly are repeatable. Image generation is stochastic and can leave edge artifacts or miss the requested composition; the skill checks the result, allows one correction, and reports remaining limitations. It does not guarantee pixel-identical output.
+The workflow is portable; it cannot add vision, browsing, image generation, or transparency support to a host. Other agents do not require Codex or its `imagegen` skill. Codex-specific instructions are isolated in `references/codex-adapter.md`. No Python is required for the core workflow; provider setup and costs depend on the host.
 
-No source photos or generated images are included in this repository.
+The target is a body-free outfit centered at 45–55% of canvas height with real transparency. Separate accessories such as bags, jewelry, hats, and shoes are excluded by default. Selection, analysis order, shape planning, and prompt assembly are repeatable; generated pixels are not deterministic. One correction is allowed, with remaining artifacts disclosed. Execution has not been tested on every agent platform.
+
+The original rendering prompt remains verbatim in `references/exact-prompt.md` (formerly `.txt`). No source photos or generated images are included.
