@@ -2,7 +2,7 @@
 
 [中文说明](README.zh-CN.md)
 
-An agent-independent workflow that turns the main outfit in a fashion or travel photo into a minimal flat handmade washi-paper collage on a true transparent PNG background. It preserves silhouette, colors, structure, layering, and material character using a few large paper shapes.
+An agent-independent workflow that turns the main outfit in a photo into a minimal flat handmade washi-paper collage on a true transparent PNG background. It preserves silhouette, colors, structure, layering, and material character using a few large paper shapes.
 
 ## Method 1: Give the repository link to your agent
 
@@ -28,7 +28,7 @@ Click **Code → Download ZIP** on GitHub, extract it, and upload:
 
 - `SKILL.md`
 - All Markdown files in `references/` (the exact prompt is essential; the Codex adapter is optional outside Codex)
-- Your fashion or travel photo
+- Your photo
 
 Then send:
 
